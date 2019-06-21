@@ -19,13 +19,17 @@ public class Usuario extends Persona implements Serializable {
     private ArrayList <Usuario> amigos = new ArrayList();
     private ArrayList <Usuario> solicitudes = new ArrayList();
     private int conexion;
+    private int ID;
 
-    public Usuario(String usuario, String password, int conexion, String nombre, String apellido, String telefono) {
+    public Usuario(String usuario, String password, int conexion, int ID, String nombre, String apellido, String telefono) {
         super(nombre, apellido, telefono);
         this.usuario = usuario;
         this.password = password;
         this.conexion = conexion;
+        this.ID = ID;
     }
+
+    
     
     public String getUsuario() {
         return usuario;
@@ -74,6 +78,16 @@ public class Usuario extends Persona implements Serializable {
     public void setSolicitudes(ArrayList<Usuario> solicitudes) {
         this.solicitudes = solicitudes;
     }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+    
+    
     
     @Override
     public String toString() {

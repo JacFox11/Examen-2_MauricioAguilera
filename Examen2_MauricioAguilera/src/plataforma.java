@@ -48,7 +48,7 @@ public class plataforma extends javax.swing.JFrame {
     }
     
     public void Amigos (){
-        jl_amigos.removeAll();
+        jl_amigos.setModel(new DefaultListModel());
         DefaultListModel modelo = (DefaultListModel) jl_amigos.getModel();
         for (Usuario t : au.getUsuarios().get(pos).getAmigos()) {
             modelo.addElement(t);
@@ -56,7 +56,7 @@ public class plataforma extends javax.swing.JFrame {
     }
     
     public void Usuarios (){
-        jl_usuarios.removeAll();
+        jl_usuarios.setModel(new DefaultListModel());
         DefaultListModel modelo = (DefaultListModel) jl_usuarios.getModel();
         for (Usuario t : au.getUsuarios()) {
             modelo.addElement(t);
@@ -470,7 +470,7 @@ public class plataforma extends javax.swing.JFrame {
             pass=pf_nuevo.getText();
             conn = (Integer) sp_conexion.getValue();
             au.cargarArchivo();
-            au.getUsuarios().add(new Usuario(usuario, pass, conn, nombre, apellido, telefono));
+            au.getUsuarios().add(new Usuario(usuario, pass, conn, au.getUsuarios().size(), nombre, apellido, telefono));
             au.escribirArchivo();
             JOptionPane.showMessageDialog(jd_nuevo, "Usuario creado exitosamente");
             jd_nuevo.setVisible(false);
@@ -502,11 +502,13 @@ public class plataforma extends javax.swing.JFrame {
                         if (response == JOptionPane.OK_OPTION) {
                             au.cargarArchivo();
                             au.getUsuarios().get(pos).getAmigos().add(t);
-                            t.getAmigos().add(au.getUsuarios().get(pos));
+                            au.getUsuarios().get(t.getID()).getAmigos().add(au.getUsuarios().get(pos));
                             au.escribirArchivo();
                             Amigos();
                         }
+                        au.getUsuarios().get(pos).getSolicitudes().clear();
                     }
+                    
                 } catch (HeadlessException e) {
                 }
                 jd_chat.setModal(true);
@@ -659,4 +661,5 @@ public class plataforma extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 AdminUsuarios au = new AdminUsuarios("./Usuarios.ex");
 int pos;
+
 }
