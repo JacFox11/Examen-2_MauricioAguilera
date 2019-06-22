@@ -114,9 +114,9 @@ public class plataforma extends javax.swing.JFrame {
         jt_chats = new javax.swing.JTree();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        ta_log = new javax.swing.JTextArea();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        ta_message = new javax.swing.JTextArea();
         jButton4 = new javax.swing.JButton();
         jProgressBar1 = new javax.swing.JProgressBar();
         jLabel10 = new javax.swing.JLabel();
@@ -250,13 +250,13 @@ public class plataforma extends javax.swing.JFrame {
 
         jLabel9.setText("Amigos");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane3.setViewportView(jTextArea1);
+        ta_log.setColumns(20);
+        ta_log.setRows(5);
+        jScrollPane3.setViewportView(ta_log);
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane4.setViewportView(jTextArea2);
+        ta_message.setColumns(20);
+        ta_message.setRows(5);
+        jScrollPane4.setViewportView(ta_message);
 
         jButton4.setText("Enviar");
 
@@ -654,8 +654,6 @@ public class plataforma extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JDialog jd_chat;
     private javax.swing.JDialog jd_nuevo;
     private javax.swing.JList<String> jl_amigos;
@@ -667,6 +665,8 @@ public class plataforma extends javax.swing.JFrame {
     private javax.swing.JPopupMenu popup_amigos;
     private javax.swing.JPopupMenu popup_usuario;
     private javax.swing.JSpinner sp_conexion;
+    private javax.swing.JTextArea ta_log;
+    private javax.swing.JTextArea ta_message;
     private javax.swing.JTextField tf_apellido;
     private javax.swing.JTextField tf_nombre;
     private javax.swing.JTextField tf_nuevousuario;
