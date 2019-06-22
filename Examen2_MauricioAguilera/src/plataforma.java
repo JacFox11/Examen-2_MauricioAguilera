@@ -372,6 +372,11 @@ public class plataforma extends javax.swing.JFrame {
         popup_usuario.add(jm_agregar);
 
         jMenuItem1.setText("Iniciar Chat");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         popup_amigos.add(jMenuItem1);
 
         jMenuItem2.setText("Eliminar Amigo");
@@ -489,9 +494,9 @@ public class plataforma extends javax.swing.JFrame {
         
         for (int i = 0; i < au.getUsuarios().size(); i++) {
             if (tf_usuario.getText().equals(au.getUsuarios().get(i).getUsuario()) && pf_pass.getText().equals(au.getUsuarios().get(i).getPassword())){
+                pos=i;
                 Amigos();
                 Usuarios();
-                pos=i;
                 try {
                     for (Usuario t : au.getUsuarios().get(pos).getSolicitudes()) {
                         int response = JOptionPane.showConfirmDialog(jd_chat,
@@ -579,6 +584,14 @@ public class plataforma extends javax.swing.JFrame {
                 Amigos();
             }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        DefaultListModel modelo = (DefaultListModel) jl_amigos.getModel();
+        Usuario amigo = (Usuario) modelo.getElementAt(jl_amigos.getSelectedIndex());
+        au.getUsuarios().get(pos).getChats().add(new Privado(au.getUsuarios().get(amigo.getID())));
+        
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
